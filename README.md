@@ -1,2 +1,2 @@
 # proyecto-compiladores-kotlin
-Traducción directa desde Java a Kotlin de mi repositorio github.com/emmagp3/proyecto-compiladores.
+Traducción directa desde Java a Kotlin de mi repositorio [proyecto-compiladores](github.com/emmagp3/proyecto-compiladores).
