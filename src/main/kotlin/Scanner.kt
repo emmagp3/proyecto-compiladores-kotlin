@@ -1,10 +1,8 @@
-package interpreter
-
 import java.util.ArrayList
 
-class Scanner(val source: String) {
+class Scanner(private val source: String) {
   private val tokens = ArrayList<Token>()
-  private val line = 0
+  private var line = 0
   private val keywords: MutableMap<String, TokenType>
   init {
     keywords = HashMap()
@@ -25,7 +23,29 @@ class Scanner(val source: String) {
   }
 
   fun scanTokens(): List<Token> {
+    var state = 0
+
+    for (i in 0..source.length) {
+      val currentChar = getCurrentChar(i, source.length)
+      line = incrementLineNumber(currentChar)
+
+      when (state) {
+        0 -> {
+          if (currentChar != '\u0000') {
+            println("Pasa: $currentChar")
+          }
+          else {
+            println("No pasa: $currentChar")
+          }
+        }
+      }
+    }
+
     tokens.add(Token(TokenType.EOF, "", null, line))
     return tokens
   }
+
+  private fun incrementLineNumber(current: Char) = if (current == '\n') line++ else line
+
+  private fun getCurrentChar(index: Int, sourceLength: Int) = if (index >= sourceLength) '\u0000' else source[index]
 }

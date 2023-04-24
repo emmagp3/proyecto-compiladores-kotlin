@@ -1,5 +1,3 @@
-package interpreter
-
 enum class TokenType {
   EOF,
   CLASS,
